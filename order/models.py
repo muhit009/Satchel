@@ -23,7 +23,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=20)
     order_status = models.CharField(max_length = 20,choices=STATUS, default='processing')
     confirmation_status = models.BooleanField(default=False)
-    total_amount = models.IntegerField(default=20)
+    total_amount = models.IntegerField(default=1)
     total_price = models.FloatField()
     transaction_id = models.CharField(max_length=20 , null=False)
     date = models.DateTimeField(blank=True, default = timezone.now)
@@ -35,7 +35,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    amount = models.IntegerField(default=10)
+    amount = models.IntegerField(default=1)
     price = models.FloatField()    
 
     def __str__(self):

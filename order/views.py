@@ -62,7 +62,7 @@ class OrderItemView(APIView):
     def post(self, request):
         order_item_serializer = OrderItemSerializer(data = request.data)
         if order_item_serializer.is_valid:
-            if(int(order_item_serializer.validated_data.get('quantity')) >= 10):
+            if(int(order_item_serializer.validated_data.get('quantity')) >= 1):
                 order_item_serializer.save()
                 return Response({'status': 200, 'payload': order_item_serializer.data, 'message': "successful"})
             else:
